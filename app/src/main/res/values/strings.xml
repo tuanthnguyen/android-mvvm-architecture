@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Image App</string>
+    <string name="load_again">Click to load again</string>
+</resources>
