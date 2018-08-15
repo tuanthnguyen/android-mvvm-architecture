@@ -1,6 +1,6 @@
 package com.tuann.mvvm.di.activitymodule
 
-import com.tuann.mvvm.ui.MainActivity
+import com.tuann.mvvm.presentation.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

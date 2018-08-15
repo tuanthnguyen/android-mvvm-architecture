@@ -1,4 +1,4 @@
-package com.tuann.mvvm.ui.common.binding
+package com.tuann.mvvm.presentation.common.binding
 
 import android.databinding.BindingAdapter
 import android.text.TextUtils

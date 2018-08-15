@@ -1,11 +1,11 @@
-package com.tuann.mvvm.ui.images
+package com.tuann.mvvm.presentation.images
 
 import android.arch.lifecycle.*
 import android.databinding.ObservableBoolean
 import com.tuann.mvvm.data.model.Image
 import com.tuann.mvvm.data.repository.ImageRepository
-import com.tuann.mvvm.ui.Result
-import com.tuann.mvvm.ui.common.mapper.toResult
+import com.tuann.mvvm.presentation.Result
+import com.tuann.mvvm.presentation.common.mapper.toResult
 import com.tuann.mvvm.util.ext.map
 import com.tuann.mvvm.util.ext.toLiveData
 import com.tuann.mvvm.util.rx.SchedulerProvider

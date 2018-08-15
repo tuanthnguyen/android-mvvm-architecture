@@ -1,4 +1,4 @@
-package com.tuann.mvvm.ui.images
+package com.tuann.mvvm.presentation.images
 
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
@@ -9,8 +9,8 @@ import com.tuann.mvvm.R
 import com.tuann.mvvm.data.model.Image
 import com.tuann.mvvm.databinding.ItemImageBinding
 import com.tuann.mvvm.databinding.ItemLoadMoreBinding
-import com.tuann.mvvm.ui.common.DataBoundListCustomAdapter
-import com.tuann.mvvm.ui.common.RetryListener
+import com.tuann.mvvm.presentation.common.DataBoundListCustomAdapter
+import com.tuann.mvvm.presentation.common.RetryListener
 import com.tuann.mvvm.util.AppExecutors
 
 class ImagesAdapter(appExecutors: AppExecutors,

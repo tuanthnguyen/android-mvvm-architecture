@@ -1,10 +1,10 @@
-package com.tuann.mvvm.ui
+package com.tuann.mvvm.presentation
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import com.tuann.mvvm.R
-import com.tuann.mvvm.ui.images.ImagesFragment
+import com.tuann.mvvm.presentation.images.ImagesFragment
 import javax.inject.Inject
 
 class Navigator @Inject constructor(private val activity: AppCompatActivity) {

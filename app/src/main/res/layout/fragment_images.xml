@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.tuann.mvvm.ui.images.ImagesViewModel" />
+            type="com.tuann.mvvm.presentation.images.ImagesViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

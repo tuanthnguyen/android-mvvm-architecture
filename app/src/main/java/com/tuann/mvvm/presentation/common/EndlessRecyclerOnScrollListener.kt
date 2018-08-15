@@ -1,4 +1,4 @@
-package com.tuann.mvvm.ui.common
+package com.tuann.mvvm.presentation.common
 
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView

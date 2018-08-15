@@ -1,4 +1,4 @@
-package com.tuann.mvvm.ui.common
+package com.tuann.mvvm.presentation.common
 
 interface RetryListener {
     fun retry()

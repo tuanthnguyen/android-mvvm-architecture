@@ -1,4 +1,4 @@
-package com.tuann.mvvm.ui.images
+package com.tuann.mvvm.presentation.images
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -11,9 +11,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.tuann.mvvm.databinding.FragmentImagesBinding
 import com.tuann.mvvm.di.ViewModelFactory
-import com.tuann.mvvm.ui.Result
-import com.tuann.mvvm.ui.common.EndlessRecyclerOnScrollListener
-import com.tuann.mvvm.ui.common.RetryListener
+import com.tuann.mvvm.presentation.Result
+import com.tuann.mvvm.presentation.common.EndlessRecyclerOnScrollListener
+import com.tuann.mvvm.presentation.common.RetryListener
 import com.tuann.mvvm.util.AppExecutors
 import com.tuann.mvvm.util.autoCleared
 import dagger.android.support.DaggerFragment

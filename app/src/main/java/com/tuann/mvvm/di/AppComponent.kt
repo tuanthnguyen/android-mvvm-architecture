@@ -2,7 +2,7 @@ package com.tuann.mvvm.di
 
 import android.app.Application
 import com.tuann.mvvm.di.activitymodule.MainActivityBuilder
-import com.tuann.mvvm.ui.App
+import com.tuann.mvvm.presentation.App
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector

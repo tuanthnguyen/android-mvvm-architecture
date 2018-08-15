@@ -1,4 +1,4 @@
-package com.tuann.mvvm.ui
+package com.tuann.mvvm.presentation
 
 import android.arch.lifecycle.ViewModel
 import android.content.Context

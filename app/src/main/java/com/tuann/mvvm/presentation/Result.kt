@@ -1,4 +1,4 @@
-package com.tuann.mvvm.ui
+package com.tuann.mvvm.presentation
 
 sealed class Result<T>(val inProgress: Boolean) {
 

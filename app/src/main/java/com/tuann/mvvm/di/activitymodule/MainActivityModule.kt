@@ -3,10 +3,10 @@ package com.tuann.mvvm.di.activitymodule
 import android.arch.lifecycle.ViewModel
 import android.support.v7.app.AppCompatActivity
 import com.tuann.mvvm.di.ViewModelKey
-import com.tuann.mvvm.ui.MainActivity
-import com.tuann.mvvm.ui.MainViewModel
-import com.tuann.mvvm.ui.images.ImagesFragment
-import com.tuann.mvvm.ui.images.ImagesViewModel
+import com.tuann.mvvm.presentation.MainActivity
+import com.tuann.mvvm.presentation.MainViewModel
+import com.tuann.mvvm.presentation.images.ImagesFragment
+import com.tuann.mvvm.presentation.images.ImagesViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

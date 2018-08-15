@@ -1,4 +1,4 @@
-package com.tuann.mvvm.ui
+package com.tuann.mvvm.presentation
 
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.tuann.mvvm.di.DaggerAppComponent

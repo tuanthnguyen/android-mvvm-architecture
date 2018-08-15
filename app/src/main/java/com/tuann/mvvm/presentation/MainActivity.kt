@@ -1,10 +1,10 @@
-package com.tuann.mvvm.ui
+package com.tuann.mvvm.presentation
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import com.tuann.mvvm.R
 import com.tuann.mvvm.di.ViewModelFactory
-import com.tuann.mvvm.ui.common.BaseActivity
+import com.tuann.mvvm.presentation.common.BaseActivity
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
