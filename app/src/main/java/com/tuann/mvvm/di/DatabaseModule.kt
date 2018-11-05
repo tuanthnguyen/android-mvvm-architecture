@@ -1,7 +1,7 @@
 package com.tuann.mvvm.di
 
 import android.app.Application
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import com.tuann.mvvm.data.db.*
 import com.tuann.mvvm.data.db.dao.ImageDao
 import com.tuann.mvvm.data.db.dao.UserDao

@@ -1,10 +1,10 @@
 package com.tuann.mvvm.presentation.images
 
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
-import android.support.v7.util.DiffUtil
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.DiffUtil
 import com.tuann.mvvm.R
 import com.tuann.mvvm.data.model.Image
 import com.tuann.mvvm.databinding.ItemImageBinding

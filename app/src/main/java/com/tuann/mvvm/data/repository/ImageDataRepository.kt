@@ -1,6 +1,5 @@
 package com.tuann.mvvm.data.repository
 
-import android.util.Log
 import com.tuann.mvvm.data.api.ImageApi
 import com.tuann.mvvm.data.api.response.mapper.toImageEntities
 import com.tuann.mvvm.data.db.ImageDatabase
@@ -12,6 +11,7 @@ import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.functions.BiFunction
+import timber.log.Timber
 import javax.inject.Inject
 
 class ImageDataRepository @Inject constructor(
@@ -46,8 +46,8 @@ class ImageDataRepository @Inject constructor(
 
                         return@map imageEntities.toList().toImages()
                     }
-                    .onErrorReturn {
-                        error-> Log.wtf("error", error.toString())
+                    .onErrorReturn { error ->
+                        Timber.e(error.toString())
 
                         return@onErrorReturn emptyList<Image>() }
                     .subscribeOn(schedulerProvider.io())

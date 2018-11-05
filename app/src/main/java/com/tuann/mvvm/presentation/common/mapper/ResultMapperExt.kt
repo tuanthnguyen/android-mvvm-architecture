@@ -1,6 +1,6 @@
 package com.tuann.mvvm.presentation.common.mapper
 
-import android.support.annotation.CheckResult
+import androidx.annotation.CheckResult
 import com.tuann.mvvm.presentation.Result
 import com.tuann.mvvm.util.rx.SchedulerProvider
 import io.reactivex.Flowable

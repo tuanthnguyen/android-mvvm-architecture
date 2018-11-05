@@ -1,7 +1,7 @@
 package com.tuann.mvvm.presentation.images
 
-import android.arch.lifecycle.*
-import android.databinding.ObservableBoolean
+import androidx.databinding.ObservableBoolean
+import androidx.lifecycle.*
 import com.tuann.mvvm.data.model.Image
 import com.tuann.mvvm.data.repository.ImageRepository
 import com.tuann.mvvm.presentation.Result

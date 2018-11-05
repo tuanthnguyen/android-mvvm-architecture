@@ -1,9 +1,9 @@
 package com.tuann.mvvm.presentation.common
 
-import android.databinding.ViewDataBinding
-import android.support.v7.recyclerview.extensions.AsyncDifferConfig
-import android.support.v7.util.DiffUtil
 import android.view.ViewGroup
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.AsyncDifferConfig
+import androidx.recyclerview.widget.DiffUtil
 import com.tuann.mvvm.util.AppExecutors
 
 /*

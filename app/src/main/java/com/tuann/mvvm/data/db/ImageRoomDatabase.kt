@@ -1,6 +1,6 @@
 package com.tuann.mvvm.data.db
 
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.RoomDatabase
 import com.tuann.mvvm.data.db.dao.ImageDao
 import com.tuann.mvvm.data.db.dao.UserDao
 import com.tuann.mvvm.data.db.entity.ImageEntity

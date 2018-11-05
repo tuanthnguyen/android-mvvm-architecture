@@ -1,7 +1,7 @@
 package com.tuann.mvvm.di.activitymodule
 
-import android.arch.lifecycle.ViewModel
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
 import com.tuann.mvvm.di.ViewModelKey
 import com.tuann.mvvm.presentation.MainActivity
 import com.tuann.mvvm.presentation.MainViewModel

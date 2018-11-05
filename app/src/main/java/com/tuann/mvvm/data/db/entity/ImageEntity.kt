@@ -1,7 +1,7 @@
 package com.tuann.mvvm.data.db.entity
 
-import android.arch.persistence.room.*
-import android.arch.persistence.room.ForeignKey.CASCADE
+import androidx.room.*
+import androidx.room.ForeignKey.CASCADE
 import org.threeten.bp.Instant
 
 @Entity(tableName = "image"
