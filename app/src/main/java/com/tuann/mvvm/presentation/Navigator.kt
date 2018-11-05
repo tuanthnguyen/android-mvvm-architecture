@@ -1,21 +1,19 @@
 package com.tuann.mvvm.presentation
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.tuann.mvvm.R
 import com.tuann.mvvm.presentation.images.ImagesFragment
 import javax.inject.Inject
 
 class Navigator @Inject constructor(private val activity: AppCompatActivity) {
     private val containerId: Int = R.id.container
-    private val fragmentManager: FragmentManager = activity.supportFragmentManager
+    private val fragmentManager: androidx.fragment.app.FragmentManager = activity.supportFragmentManager
 
     fun navigateToImages() {
         replaceFragment(ImagesFragment.newInstance())
     }
 
-    private fun replaceFragment(fragment: Fragment) {
+    private fun replaceFragment(fragment: androidx.fragment.app.Fragment) {
         val transaction = fragmentManager
                 .beginTransaction()
                 .replace(containerId, fragment, null)

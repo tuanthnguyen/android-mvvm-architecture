@@ -1,12 +1,12 @@
 package com.tuann.mvvm.presentation.common
 
-import android.support.v7.recyclerview.extensions.AsyncDifferConfig
-import android.support.v7.recyclerview.extensions.AsyncDifferConfig.Builder
-import android.support.v7.recyclerview.extensions.AsyncListDiffer
-import android.support.v7.util.AdapterListUpdateCallback
-import android.support.v7.util.DiffUtil.ItemCallback
-import android.support.v7.widget.RecyclerView.Adapter
-import android.support.v7.widget.RecyclerView.ViewHolder
+import androidx.recyclerview.widget.AdapterListUpdateCallback
+import androidx.recyclerview.widget.AsyncDifferConfig
+import androidx.recyclerview.widget.AsyncDifferConfig.Builder
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil.ItemCallback
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
 @Suppress("LeakingThis")
 abstract class ListAdapterCustom<T, VH : ViewHolder> : Adapter<VH> {

@@ -1,7 +1,7 @@
 package com.tuann.mvvm.presentation
 
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProviders
 import com.tuann.mvvm.R
 import com.tuann.mvvm.di.ViewModelFactory
 import com.tuann.mvvm.presentation.common.BaseActivity

@@ -1,6 +1,6 @@
 package com.tuann.mvvm.data.db
 
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.RoomDatabase
 import com.tuann.mvvm.data.db.dao.UserDao
 import javax.inject.Inject
 
