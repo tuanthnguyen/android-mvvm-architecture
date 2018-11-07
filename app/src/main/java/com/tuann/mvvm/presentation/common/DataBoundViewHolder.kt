@@ -17,10 +17,11 @@
 package com.tuann.mvvm.presentation.common
 
 import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * A generic ViewHolder that works with a [ViewDataBinding].
  * @param <T> The type of the ViewDataBinding.
 </T> */
 class DataBoundViewHolder<out T : ViewDataBinding> constructor(val binding: T) :
-        androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root)
+        RecyclerView.ViewHolder(binding.root)

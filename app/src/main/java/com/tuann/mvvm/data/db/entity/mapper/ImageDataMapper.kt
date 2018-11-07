@@ -1,15 +1,16 @@
 package com.tuann.mvvm.data.db.entity.mapper
 
 import com.tuann.mvvm.data.db.entity.ImageEntity
+import com.tuann.mvvm.data.db.entity.ImageWithUser
 import com.tuann.mvvm.data.model.Image
 import io.reactivex.Flowable
 
-fun Flowable<List<ImageEntity>>.toImages(): Flowable<List<Image>> = map {
+fun Flowable<List<ImageWithUser>>.toImages(): Flowable<List<Image>> = map {
     return@map it.toImages()
 }
 
-fun List<ImageEntity>.toImages(): List<Image> =
+fun List<ImageEntity>.toImagesFromEntity(): List<Image> =
         map { Image(it.id, it.urls.small, it.urls.full, it.userEntity?.name ?: "") }
 
-fun List<com.tuann.mvvm.data.api.response.Image>.toImagesModel() =
-        map { Image(it.id, it.urls.small, it.urls.full, it.user.name) }
+fun List<ImageWithUser>.toImages(): List<Image> =
+        map { Image(it.id, it.small, it.full, it.authorName) }

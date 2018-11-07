@@ -1,15 +1,23 @@
 ## Android MVVM Architecture Sample
 
-The examples to handle paging the photos<br/><br/>
-Some of the features I will develop further include:
-1. View detail images
-2. Implement WorkerManager to handle download file
-3. Write Unit Test
+The examples to handle paging the photos(include offline mode feature)
+
+## How to build it
+
+Thanks to Unsplash, this project uses their API to fetch beautiful images. 
+
+Note: Currently, I have added the token in this project. You can try it now.
+
+- Firstly, let's head to [Unsplash's developer page](https://unsplash.com/developers) to get your own API token.  
+- Secondly, put it inside your `build.gradle` file as following:
+```
+buildConfigField "String", "UNSPLASH_TOKEN", "\"Client-ID *********\""
+```
 
 ### Libraries
-- Android Support Library
-- Android Architecture Components(Room, ViewModels, LiveData)
-- Android Data Binding
+- AndroidX Support Library
+- AndroidX Architecture Components(Room, ViewModels, LiveData)
+- AndroidX Data Binding
 - RxJava2
 - Dagger2
 - Retrofit2

@@ -15,6 +15,7 @@ android {
         versionCode rootProject.versionCode
         versionName rootProject.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "UNSPLASH_TOKEN", "\"Client-ID 1b31050af4345f3d6aea1ed27560569d0ffa6e5a365989e15970939505a171c5\""
     }
     buildTypes {
         release {
@@ -30,9 +31,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    testImplementation "junit:junit:$rootProject.junit_version"
-    androidTestImplementation 'androidx.test:runner:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
     implementation 'androidx.core:core-ktx:1.0.0'
 
@@ -72,6 +70,9 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger_version"
 
+    kapt 'com.android.tools.build.jetifier:jetifier-core:1.0.0-beta02'
+    annotationProcessor 'com.android.tools.build.jetifier:jetifier-core:1.0.0-beta02'
+
     implementation "com.github.bumptech.glide:glide:$rootProject.glide_version"
     implementation "com.github.bumptech.glide:okhttp3-integration:$rootProject.glide_version"
     kapt "com.github.bumptech.glide:compiler:$rootProject.glide_version"
@@ -81,7 +82,15 @@ dependencies {
 
     implementation "com.jakewharton.threetenabp:threetenabp:1.1.0"
 
-    testImplementation "org.threeten:threetenbp:1.3.6"
-
     implementation "com.jakewharton.timber:timber:4.7.1"
+
+    // Test
+    testImplementation "junit:junit:$rootProject.junit_version"
+    testImplementation "com.nhaarman:mockito-kotlin:1.5.0"
+
+    testImplementation "org.robolectric:robolectric:$rootProject.robolectric_version"
+    testImplementation "org.robolectric:shadows-multidex:$rootProject.robolectric_version"
+
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 }
