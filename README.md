@@ -1,6 +1,6 @@
 ## Android MVVM Architecture Sample
 
-The examples to handle paging the photos(offline mode support)
+This project handles paging images and supports offline mode.
 
 ## How to build it
 
