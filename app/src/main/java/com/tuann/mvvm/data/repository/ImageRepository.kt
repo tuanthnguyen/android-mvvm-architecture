@@ -10,5 +10,5 @@ interface ImageRepository {
     val images : Flowable<List<Image>>
     fun loadImages(page: Int): Single<List<Image>>
     fun loadImagesApi(page: Int): Single<List<Image>>
-    fun saveImages(images: List<ImageEntity>): Completable
+    fun saveImages(images: List<ImageEntity>, page: Int): Completable
 }

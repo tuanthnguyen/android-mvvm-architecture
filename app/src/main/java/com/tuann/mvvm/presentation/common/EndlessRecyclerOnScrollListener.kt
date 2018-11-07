@@ -1,6 +1,9 @@
 package com.tuann.mvvm.presentation.common
 
-abstract class EndlessRecyclerOnScrollListener(private val linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager) : androidx.recyclerview.widget.RecyclerView.OnScrollListener() {
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+
+abstract class EndlessRecyclerOnScrollListener(private val linearLayoutManager: LinearLayoutManager) : RecyclerView.OnScrollListener() {
     private var previousTotal = 0
     private var loading = true
     private val visibleThreshold = 5
@@ -9,7 +12,7 @@ abstract class EndlessRecyclerOnScrollListener(private val linearLayoutManager: 
     private var totalItemCount: Int = 0
     private var currentPage = 1
 
-    override fun onScrolled(recyclerView: androidx.recyclerview.widget.RecyclerView, dx: Int, dy: Int) {
+    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
         super.onScrolled(recyclerView, dx, dy)
 
         visibleItemCount = recyclerView.childCount

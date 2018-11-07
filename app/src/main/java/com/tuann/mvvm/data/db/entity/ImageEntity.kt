@@ -21,7 +21,7 @@ data class ImageEntity(
         @Embedded var urls: ImageUrlsListEntity,
         @ColumnInfo(name = "user_id") var userId: String,
         var page: Int,
-        @Ignore var userEntity: UserEntity?
+        @Ignore var userEntity: UserEntity? = UserEntity()
 ) {
     constructor() : this("", null, null, 0, 0, "", ImageUrlsListEntity(), "", 0, UserEntity())
 }

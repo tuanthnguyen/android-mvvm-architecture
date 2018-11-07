@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.tuann.mvvm.databinding.FragmentImagesBinding
 import com.tuann.mvvm.di.ViewModelFactory
 import com.tuann.mvvm.presentation.Result
 import com.tuann.mvvm.presentation.common.EndlessRecyclerOnScrollListener
 import com.tuann.mvvm.presentation.common.RetryListener
 import com.tuann.mvvm.util.AppExecutors
+import com.tuann.mvvm.util.autoCleared
 import dagger.android.support.DaggerFragment
 import timber.log.Timber
 import javax.inject.Inject
@@ -60,8 +63,8 @@ class ImagesFragment : DaggerFragment(), RetryListener {
             Toast.makeText(activity, it.id, Toast.LENGTH_SHORT).show()
         }
         this.adapter = adapter
-        (binding.recyclerView.layoutManager as androidx.recyclerview.widget.GridLayoutManager).spanSizeLookup = object :
-                androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup() {
+        (binding.recyclerView.layoutManager as GridLayoutManager).spanSizeLookup = object :
+                GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return when (adapter.getItemViewType(position)) {
                     ImagesAdapter.MORE -> 2
@@ -71,7 +74,7 @@ class ImagesFragment : DaggerFragment(), RetryListener {
         }
 
         // fix the bug: Auto scroll to bottom
-        adapter.registerAdapterDataObserver(object : androidx.recyclerview.widget.RecyclerView.AdapterDataObserver() {
+        adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
                 if (positionStart == 0) {
                     binding.recyclerView.layoutManager?.scrollToPosition(0)
@@ -79,7 +82,7 @@ class ImagesFragment : DaggerFragment(), RetryListener {
             }
         })
 
-        val scrollListener = object : EndlessRecyclerOnScrollListener(binding.recyclerView.layoutManager as androidx.recyclerview.widget.GridLayoutManager) {
+        val scrollListener = object : EndlessRecyclerOnScrollListener(binding.recyclerView.layoutManager as GridLayoutManager) {
             override fun onLoadMore(currentPage: Int) {
                 imagesViewModel.loadImages(currentPage)
             }

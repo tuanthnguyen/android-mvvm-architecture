@@ -7,7 +7,7 @@ import com.tuann.mvvm.di.NetworkModule
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 
-class App: DaggerApplication() {
+open class App : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
