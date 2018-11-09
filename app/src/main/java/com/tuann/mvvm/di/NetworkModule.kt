@@ -20,38 +20,49 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
-    @NetworkLogger @Singleton @Provides @IntoSet
-    fun provideStetho() : Interceptor = StethoInterceptor()
+    @NetworkLogger
+    @Singleton
+    @Provides
+    @IntoSet
+    fun provideStetho(): Interceptor = StethoInterceptor()
 
-    @NetworkLogger @Singleton @Provides @IntoSet
+    @NetworkLogger
+    @Singleton
+    @Provides
+    @IntoSet
     fun provideNetworkLogger(): Interceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
-    @Singleton @Provides
-    fun provideOkHttpClient(@NetworkLogger loggingInterceptors: Set<@JvmSuppressWildcards
-    Interceptor>):
-            OkHttpClient =
-            OkHttpClient.Builder().apply {
-                loggingInterceptors.forEach {
-                    addNetworkInterceptor(it)
-                }
-            }.build()
+    @Singleton
+    @Provides
+    fun provideOkHttpClient(
+        @NetworkLogger loggingInterceptors: Set<@JvmSuppressWildcards
+        Interceptor>
+    ):
+        OkHttpClient =
+        OkHttpClient.Builder().apply {
+            loggingInterceptors.forEach {
+                addNetworkInterceptor(it)
+            }
+        }.build()
 
-    @Singleton @Provides
+    @Singleton
+    @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
-            Retrofit.Builder().apply {
-                client(okHttpClient)
-                baseUrl("https://api.unsplash.com/")
-                addConverterFactory(MoshiConverterFactory.create(Moshi.Builder()
-                        .apply {
-                            add(ApplicationJsonAdapterFactory.INSTANCE)
-                            add(Instant::class.java, InstantAdapter())
-                        }.build()))
-                addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
-            }.build()
+        Retrofit.Builder().apply {
+            client(okHttpClient)
+            baseUrl("https://api.unsplash.com/")
+            addConverterFactory(MoshiConverterFactory.create(Moshi.Builder()
+                .apply {
+                    add(ApplicationJsonAdapterFactory.INSTANCE)
+                    add(Instant::class.java, InstantAdapter())
+                }.build()))
+            addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
+        }.build()
 
-    @Singleton @Provides
-    fun provideImageApi(retrofit: Retrofit) : ImageApi =
-            retrofit.create(ImageApi::class.java)
+    @Singleton
+    @Provides
+    fun provideImageApi(retrofit: Retrofit): ImageApi =
+        retrofit.create(ImageApi::class.java)
 }

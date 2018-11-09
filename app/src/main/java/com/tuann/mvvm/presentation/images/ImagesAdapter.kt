@@ -13,9 +13,11 @@ import com.tuann.mvvm.presentation.common.DataBoundListCustomAdapter
 import com.tuann.mvvm.presentation.common.RetryListener
 import com.tuann.mvvm.util.AppExecutors
 
-class ImagesAdapter(appExecutors: AppExecutors,
-                    private val retryListener: RetryListener,
-                    private val callback: ((Image) -> Unit)?) : DataBoundListCustomAdapter<Image, ViewDataBinding>(
+class ImagesAdapter(
+    appExecutors: AppExecutors,
+    private val retryListener: RetryListener,
+    private val callback: ((Image) -> Unit)?
+) : DataBoundListCustomAdapter<Image, ViewDataBinding>(
         appExecutors = appExecutors,
         diffCallback = object : DiffUtil.ItemCallback<Image>() {
             override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean {

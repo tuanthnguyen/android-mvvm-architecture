@@ -5,15 +5,15 @@ import se.ansman.kotshi.JsonSerializable
 
 @JsonSerializable
 data class User(
-        val id: String,
-        val username: String,
-        val name: String,
-        @Json(name = "profile_image") val profileImage: ProfileImage
+    val id: String,
+    val username: String,
+    val name: String,
+    @Json(name = "profile_image") val profileImage: ProfileImage
 )
 
 @JsonSerializable
 data class ProfileImage(
-        val small: String,
-        val medium: String,
-        val large: String
+    val small: String,
+    val medium: String,
+    val large: String
 )

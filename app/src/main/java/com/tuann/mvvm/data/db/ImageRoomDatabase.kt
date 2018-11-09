@@ -10,9 +10,9 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class ImageRoomDatabase @Inject constructor(
-        private val database: RoomDatabase,
-        private val imageDao: ImageDao,
-        private val userDao: UserDao
+    private val database: RoomDatabase,
+    private val imageDao: ImageDao,
+    private val userDao: UserDao
 ) : ImageDatabase {
 
     override fun saveImageEntities(images: List<ImageEntity>, page: Int) {

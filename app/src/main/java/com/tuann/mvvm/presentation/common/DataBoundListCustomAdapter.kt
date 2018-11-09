@@ -29,8 +29,8 @@ import com.tuann.mvvm.util.AppExecutors
  * @param <V> The type of the ViewDataBinding
 </V></T> */
 abstract class DataBoundListCustomAdapter<T, V : ViewDataBinding>(
-        appExecutors: AppExecutors,
-        diffCallback: DiffUtil.ItemCallback<T>
+    appExecutors: AppExecutors,
+    diffCallback: DiffUtil.ItemCallback<T>
 ) : ListAdapterCustom<T, DataBoundViewHolder<V>>(
         AsyncDifferConfig.Builder<T>(diffCallback)
                 .setBackgroundThreadExecutor(appExecutors.diskIO())

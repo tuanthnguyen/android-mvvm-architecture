@@ -43,37 +43,37 @@ class ImageDataRepositoryTest {
     @Test
     fun images() {
         val images = listOf(
-                ImageWithUser(DUMMY_IMAGE_ID1,
-                        DUMMY_TIME.toEpochMilli(),
-                        DUMMY_TIME.toEpochMilli(),
-                        DUMMY_WIDTH,
-                        DUMMY_HEIGHT,
-                        DUMMY_COLOR,
-                        DUMMY_SMALL_IMAGE_URL,
-                        DUMMY_FULL_IMAGE_URL,
-                        DUMMY_USER_ID,
-                        DUMMY_USER_NAME),
-                ImageWithUser(DUMMY_IMAGE_ID2,
-                        DUMMY_TIME.toEpochMilli(),
-                        DUMMY_TIME.toEpochMilli(),
-                        DUMMY_WIDTH,
-                        DUMMY_HEIGHT,
-                        DUMMY_COLOR,
-                        DUMMY_SMALL_IMAGE_URL,
-                        DUMMY_FULL_IMAGE_URL,
-                        DUMMY_USER_ID,
-                        DUMMY_USER_NAME)
+            ImageWithUser(DUMMY_IMAGE_ID1,
+                DUMMY_TIME.toEpochMilli(),
+                DUMMY_TIME.toEpochMilli(),
+                DUMMY_WIDTH,
+                DUMMY_HEIGHT,
+                DUMMY_COLOR,
+                DUMMY_SMALL_IMAGE_URL,
+                DUMMY_FULL_IMAGE_URL,
+                DUMMY_USER_ID,
+                DUMMY_USER_NAME),
+            ImageWithUser(DUMMY_IMAGE_ID2,
+                DUMMY_TIME.toEpochMilli(),
+                DUMMY_TIME.toEpochMilli(),
+                DUMMY_WIDTH,
+                DUMMY_HEIGHT,
+                DUMMY_COLOR,
+                DUMMY_SMALL_IMAGE_URL,
+                DUMMY_FULL_IMAGE_URL,
+                DUMMY_USER_ID,
+                DUMMY_USER_NAME)
         )
         whenever(imageDatabase.getAllImages()).doReturn(Flowable.just(images))
 
         val imageDataRepository = ImageDataRepository(mock(),
-                imageDatabase,
-                TestSchedulerProvider())
+            imageDatabase,
+            TestSchedulerProvider())
 
         imageDataRepository
-                .images
-                .test()
-                .assertValue(images.toImages())
+            .images
+            .test()
+            .assertValue(images.toImages())
 
         verify(imageDatabase).getAllImages()
     }
@@ -86,24 +86,24 @@ class ImageDataRepositoryTest {
         whenever(imageDatabase.getImagesLessThanPage(DUMMY_PAGE - 1)).doReturn(imagesLessThan)
         whenever(imageDatabase.getImagesLessThanAndEqualPage(DUMMY_PAGE)).doReturn(Single.just(imagesLessThanAndEqualPage))
         whenever(imageApi.loadTrendingImages(DUMMY_TOKEN, DUMMY_PER_PAGE, DUMMY_ORDER_BY, DUMMY_PAGE))
-                .doReturn(Single.just(imagesFromApi))
+            .doReturn(Single.just(imagesFromApi))
 
         val imageDataRepository = ImageDataRepository(imageApi,
-                imageDatabase,
-                TestSchedulerProvider())
+            imageDatabase,
+            TestSchedulerProvider())
 
         imageDataRepository
-                .loadImages(DUMMY_PAGE)
-                .test()
-                .assertValue(
-                        imagesFromApi.toImageEntities(DUMMY_PAGE).toImagesFromEntity().let {
-                            if (it.isNotEmpty()) {
-                                imagesLessThan.toImagesFromEntity() + it
-                            } else {
-                                imagesLessThanAndEqualPage.toImagesFromEntity()
-                            }
-                        }
-                )
+            .loadImages(DUMMY_PAGE)
+            .test()
+            .assertValue(
+                imagesFromApi.toImageEntities(DUMMY_PAGE).toImagesFromEntity().let {
+                    if (it.isNotEmpty()) {
+                        imagesLessThan.toImagesFromEntity() + it
+                    } else {
+                        imagesLessThanAndEqualPage.toImagesFromEntity()
+                    }
+                }
+            )
     }
 
     @Test
@@ -114,23 +114,23 @@ class ImageDataRepositoryTest {
         whenever(imageDatabase.getImagesLessThanPage(DUMMY_PAGE - 1)).doReturn(imagesLessThan)
         whenever(imageDatabase.getImagesLessThanAndEqualPage(DUMMY_PAGE)).doReturn(Single.just(imagesLessThanAndEqualPage))
         whenever(imageApi.loadTrendingImages("", DUMMY_PER_PAGE, DUMMY_ORDER_BY, DUMMY_PAGE))
-                .thenReturn(Single.just(imagesFromApi))
+            .thenReturn(Single.just(imagesFromApi))
 
         val imageDataRepository = ImageDataRepository(imageApi,
-                imageDatabase,
-                TestSchedulerProvider())
+            imageDatabase,
+            TestSchedulerProvider())
 
         imageDataRepository
-                .loadImages(DUMMY_PAGE)
-                .test()
-                .assertValue(
-                        imagesFromApi.toImageEntities(DUMMY_PAGE).toImagesFromEntity().let {
-                            if (it.isNotEmpty()) {
-                                imagesLessThan.toImagesFromEntity() + it
-                            } else {
-                                imagesLessThanAndEqualPage.toImagesFromEntity()
-                            }
-                        }
-                )
+            .loadImages(DUMMY_PAGE)
+            .test()
+            .assertValue(
+                imagesFromApi.toImageEntities(DUMMY_PAGE).toImagesFromEntity().let {
+                    if (it.isNotEmpty()) {
+                        imagesLessThan.toImagesFromEntity() + it
+                    } else {
+                        imagesLessThanAndEqualPage.toImagesFromEntity()
+                    }
+                }
+            )
     }
 }

@@ -13,8 +13,8 @@ import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class ImagesViewModel @Inject constructor(
-        private val repository: ImageRepository,
-        private val schedulerProvider: SchedulerProvider
+    private val repository: ImageRepository,
+    private val schedulerProvider: SchedulerProvider
 ) : ViewModel(), LifecycleObserver {
 
     private val compositeDisposable = CompositeDisposable()
@@ -23,11 +23,11 @@ class ImagesViewModel @Inject constructor(
     val refresh = MutableLiveData<Boolean>()
 
     var images: LiveData<Result<List<Image>>> = Transformations
-            .switchMap(page) { page ->
-                return@switchMap repository.loadImages(page)
-                        .toResult(schedulerProvider)
-                        .toLiveData()
-            }
+        .switchMap(page) { page ->
+            return@switchMap repository.loadImages(page)
+                .toResult(schedulerProvider)
+                .toLiveData()
+        }
 
     fun loadImages(page: Int = 1) {
         this.page.value = page

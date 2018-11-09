@@ -18,12 +18,12 @@ abstract class ImageDao {
     abstract fun insert(images: List<ImageEntity>)
 
     @Query("SELECT image.id as `id`, image.created_at as `createdAt`, " +
-            "image.updated_at as `updatedAt`, image.width as `width`, image.height as `height`, " +
-            "image.color as `color`, image.small as `small`, image.full as `full`, " +
-            "u.id as `userId`, u.name as `authorName` " +
-            "FROM image INNER JOIN user as u " +
-            "ON image.user_id = u.id " +
-            "ORDER BY image.updated_at DESC")
+        "image.updated_at as `updatedAt`, image.width as `width`, image.height as `height`, " +
+        "image.color as `color`, image.small as `small`, image.full as `full`, " +
+        "u.id as `userId`, u.name as `authorName` " +
+        "FROM image INNER JOIN user as u " +
+        "ON image.user_id = u.id " +
+        "ORDER BY image.updated_at DESC")
     abstract fun getAllImages(): Flowable<List<ImageWithUser>>
 
     @Query("SELECT * FROM image WHERE page <= :page ORDER BY updated_at DESC")

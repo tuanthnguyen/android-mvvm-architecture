@@ -1,5 +1,7 @@
 ## Android MVVM Architecture Sample
 
+[![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
+
 This project handles paging images and supports offline mode.
 
 ## How to build it
