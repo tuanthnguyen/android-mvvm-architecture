@@ -42,9 +42,8 @@ dependencies {
 
     implementation 'androidx.core:core-ktx:1.0.1'
 
-    implementation "androidx.appcompat:appcompat:$rootProject.support_androidx_version"
+    implementation "androidx.appcompat:appcompat:1.0.2"
     implementation "androidx.legacy:legacy-support-v4:$rootProject.support_androidx_version"
-    implementation "androidx.appcompat:appcompat:$rootProject.support_androidx_version"
     implementation "com.google.android.material:material:$rootProject.support_androidx_version"
     implementation "androidx.cardview:cardview:$rootProject.support_androidx_version"
     implementation "androidx.browser:browser:$rootProject.support_androidx_version"
@@ -85,8 +84,8 @@ dependencies {
     implementation "com.github.bumptech.glide:okhttp3-integration:$rootProject.glide_version"
     kapt "com.github.bumptech.glide:compiler:$rootProject.glide_version"
 
-    debugImplementation "com.facebook.stetho:stetho:$rootProject.stetho_version"
-    debugImplementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stetho_version"
+    implementation "com.facebook.stetho:stetho:$rootProject.stetho_version"
+    implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stetho_version"
 
     implementation "com.jakewharton.threetenabp:threetenabp:1.1.0"
 
