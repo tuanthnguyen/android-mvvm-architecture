@@ -7,7 +7,7 @@ import io.reactivex.Flowable
 import io.reactivex.Single
 
 interface ImageRepository {
-    val images : Flowable<List<Image>>
+    val images: Flowable<List<Image>>
     fun loadImages(page: Int): Single<List<Image>>
     fun loadImagesApi(page: Int): Single<List<Image>>
     fun saveImages(images: List<ImageEntity>, page: Int): Completable

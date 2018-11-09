@@ -27,7 +27,7 @@ class InstantAdapter : JsonAdapter<Instant>() {
 
     companion object {
         private val FORMATTER: DateTimeFormatter =
-                DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+            DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
 
         /**
          * Obtains an instance of Instant from a text string such as "2018-11-04T11:01:34-05:00".

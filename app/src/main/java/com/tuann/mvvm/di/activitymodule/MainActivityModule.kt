@@ -20,15 +20,17 @@ interface MainActivityModule {
     @ContributesAndroidInjector
     fun contributeImagesFragment(): ImagesFragment
 
-    @Binds @IntoMap
+    @Binds
+    @IntoMap
     @ViewModelKey(ImagesViewModel::class)
     fun bindImagesViewModel(
-            imagesViewModel: ImagesViewModel
+        imagesViewModel: ImagesViewModel
     ): ViewModel
 
-    @Binds @IntoMap
+    @Binds
+    @IntoMap
     @ViewModelKey(MainViewModel::class)
     fun bindMainViewModel(
-            mainViewModel: MainViewModel
+        mainViewModel: MainViewModel
     ): ViewModel
 }

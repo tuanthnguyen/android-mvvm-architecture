@@ -14,17 +14,23 @@ import javax.inject.Singleton
 
 @Module
 object AppModule {
-    @Singleton @Provides @JvmStatic
+    @Singleton
+    @Provides
+    @JvmStatic
     fun provideContext(application: Application): Context = application
 
-    @Singleton @Provides @JvmStatic
+    @Singleton
+    @Provides
+    @JvmStatic
     fun provideSchedulerProvider(): SchedulerProvider = AppSchedulerProvider()
 
-    @Singleton @Provides @JvmStatic
+    @Singleton
+    @Provides
+    @JvmStatic
     fun provideImageRepository(
         imageApi: ImageApi,
         imageDatabase: ImageDatabase,
         schedulerProvider: SchedulerProvider
     ): ImageRepository =
-            ImageDataRepository(imageApi, imageDatabase, schedulerProvider)
+        ImageDataRepository(imageApi, imageDatabase, schedulerProvider)
 }

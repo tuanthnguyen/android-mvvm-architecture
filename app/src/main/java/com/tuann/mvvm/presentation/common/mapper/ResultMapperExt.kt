@@ -8,18 +8,20 @@ import io.reactivex.Single
 
 @CheckResult
 fun <T> Flowable<T>.toResult(schedulerProvider: SchedulerProvider):
-        Flowable<Result<T>> {
+    Flowable<Result<T>> {
     return compose { item ->
         item
-                .map {
-                    return@map Result.success(it) }
-                .onErrorReturn { e -> Result.failure(e.message ?: "unknown", e) }
-                .observeOn(schedulerProvider.ui())
-                .startWith(Result.inProgress())
+            .map {
+                return@map Result.success(it)
+            }
+            .onErrorReturn { e -> Result.failure(e.message ?: "unknown", e) }
+            .observeOn(schedulerProvider.ui())
+            .startWith(Result.inProgress())
     }
 }
 
-@CheckResult fun <T> Single<T>.toResult(schedulerProvider: SchedulerProvider):
-        Flowable<Result<T>> {
+@CheckResult
+fun <T> Single<T>.toResult(schedulerProvider: SchedulerProvider):
+    Flowable<Result<T>> {
     return toFlowable().toResult(schedulerProvider)
 }
