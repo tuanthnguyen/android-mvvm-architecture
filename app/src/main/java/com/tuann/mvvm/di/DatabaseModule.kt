@@ -2,7 +2,11 @@ package com.tuann.mvvm.di
 
 import android.app.Application
 import androidx.room.Room
-import com.tuann.mvvm.data.db.*
+import com.tuann.mvvm.data.db.AppDatabase
+import com.tuann.mvvm.data.db.ImageDatabase
+import com.tuann.mvvm.data.db.UserDatabase
+import com.tuann.mvvm.data.db.UserRoomDatabase
+import com.tuann.mvvm.data.db.ImageRoomDatabase
 import com.tuann.mvvm.data.db.dao.ImageDao
 import com.tuann.mvvm.data.db.dao.UserDao
 import dagger.Module

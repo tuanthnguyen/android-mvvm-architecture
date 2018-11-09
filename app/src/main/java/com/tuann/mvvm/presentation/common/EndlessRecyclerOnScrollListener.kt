@@ -26,7 +26,7 @@ abstract class EndlessRecyclerOnScrollListener(private val linearLayoutManager: 
             }
         }
         if (!loading && (totalItemCount - visibleItemCount)
-                <= (firstVisibleItem + visibleThreshold)) {
+            <= (firstVisibleItem + visibleThreshold)) {
             // End has been reached
 
             currentPage++

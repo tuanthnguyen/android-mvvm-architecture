@@ -14,13 +14,13 @@ fun setImageFromImageUrl(imageView: ImageView, imageUrl: String) {
         return
     }
     Glide
-            .with(imageView.context)
-            .load(imageUrl)
-            .apply {
-                RequestOptions()
-                        .placeholder(R.mipmap.ic_launcher)
-                        .dontAnimate()
-                        .transform(CircleCrop())
-            }
-            .into(imageView)
+        .with(imageView.context)
+        .load(imageUrl)
+        .apply {
+            RequestOptions()
+                .placeholder(R.mipmap.ic_launcher)
+                .dontAnimate()
+                .transform(CircleCrop())
+        }
+        .into(imageView)
 }
