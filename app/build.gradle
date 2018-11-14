@@ -34,6 +34,11 @@ android {
     dataBinding {
         enabled = true
     }
+    android {
+        lintOptions {
+            xmlReport true
+        }
+    }
 }
 
 dependencies {
@@ -108,7 +113,7 @@ task ktlint(type: JavaExec, group: "verification") {
     description = "Check Kotlin code style."
     classpath = configurations.ktlint
     main = "com.github.shyiko.ktlint.Main"
-    args "src/**/*.kt"
+    args "src/**/*.kt", "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/reports/ktlint.xml"
 }
 check.dependsOn ktlint
 
