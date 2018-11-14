@@ -4,6 +4,8 @@
 
 This project handles paging images and supports offline mode.
 
+<img src="art/screenshot_01.png" height="500"/>
+
 ## How to build it
 
 Thanks to Unsplash, this project uses their API to fetch beautiful images. 
