@@ -113,14 +113,7 @@ task ktlint(type: JavaExec, group: "verification") {
     description = "Check Kotlin code style."
     classpath = configurations.ktlint
     main = "com.github.shyiko.ktlint.Main"
-    args "src/**/*.kt", "--reporter=checkstyle"
-    def outputDirectory = "$buildDir/reports/ktlint"
-    def outputFile = "${outputDirectory}/ktlint-checkstyle-report.xml"
-    ignoreExitValue = true
-    doFirst {
-        new File(outputDirectory).mkdirs()
-        standardOutput = new FileOutputStream(outputFile)
-    }
+    args "src/**/*.kt", "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/reports/ktlint.xml"
 }
 check.dependsOn ktlint
 

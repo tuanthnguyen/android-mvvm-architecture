@@ -3,7 +3,7 @@ github.dismiss_out_of_range_messages
 # ktLint
 github.dismiss_out_of_range_messages
 checkstyle_format.base_path = Dir.pwd
-checkstyle_format.report 'app/build/reports/ktlint/ktlint-checkstyle-report.xml'
+checkstyle_format.report 'app/build/reports/ktlint.xml'
 
 # AndroidLint
 android_lint.report_file = "app/build/reports/lint-results.xml"
