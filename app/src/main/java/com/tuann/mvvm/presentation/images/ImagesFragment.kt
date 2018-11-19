@@ -9,11 +9,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.tuann.mvvm.R
 import com.tuann.mvvm.databinding.FragmentImagesBinding
 import com.tuann.mvvm.di.ViewModelFactory
 import com.tuann.mvvm.presentation.Result
-import com.tuann.mvvm.presentation.common.EndlessRecyclerOnScrollListener
+import com.tuann.mvvm.presentation.view.EndlessRecyclerOnScrollListener
 import com.tuann.mvvm.presentation.common.RetryListener
+import com.tuann.mvvm.presentation.view.GridSpacingItemDecoration
 import com.tuann.mvvm.util.AppExecutors
 import com.tuann.mvvm.util.autoCleared
 import dagger.android.support.DaggerFragment
@@ -41,7 +43,8 @@ class ImagesFragment : DaggerFragment(), RetryListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imagesViewModel.images.observe(this, Observer { result ->
+        initRecyclerView()
+        imagesViewModel.images.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
                 is Result.Success -> {
                     adapter.submitList(result.data)
@@ -53,26 +56,18 @@ class ImagesFragment : DaggerFragment(), RetryListener {
                 }
             }
         })
-        imagesViewModel.isLoading.observe(this, Observer { isLoading ->
+        imagesViewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
             isLoading.let {
                 adapter.onFailure(!it)
             }
         })
+    }
 
+    private fun initRecyclerView() {
         val adapter = ImagesAdapter(appExecutors, this) {
-            Toast.makeText(activity, it.id, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), it.id, Toast.LENGTH_SHORT).show()
         }
         this.adapter = adapter
-        (binding.recyclerView.layoutManager as GridLayoutManager).spanSizeLookup = object :
-                GridLayoutManager.SpanSizeLookup() {
-            override fun getSpanSize(position: Int): Int {
-                return when (adapter.getItemViewType(position)) {
-                    ImagesAdapter.MORE -> 2
-                    else -> 1
-                }
-            }
-        }
-
         // fix the bug: Auto scroll to bottom
         adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
@@ -81,19 +76,19 @@ class ImagesFragment : DaggerFragment(), RetryListener {
                 }
             }
         })
-
-        val scrollListener = object : EndlessRecyclerOnScrollListener(binding.recyclerView.layoutManager as GridLayoutManager) {
+        val layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
+        binding.recyclerView.layoutManager = layoutManager
+        val scrollListener = object : EndlessRecyclerOnScrollListener(layoutManager) {
             override fun onLoadMore(currentPage: Int) {
                 imagesViewModel.loadImages(currentPage)
             }
         }
-
-        imagesViewModel.refresh.observe(this, Observer {
+        imagesViewModel.refresh.observe(viewLifecycleOwner, Observer {
             scrollListener.reset()
         })
-
+        val spacing = resources.getDimensionPixelSize(R.dimen.spacing_tiny)
+        binding.recyclerView.addItemDecoration(GridSpacingItemDecoration(SPAN_COUNT, spacing, true))
         binding.recyclerView.addOnScrollListener(scrollListener)
-
         binding.recyclerView.adapter = adapter
     }
 
@@ -102,6 +97,8 @@ class ImagesFragment : DaggerFragment(), RetryListener {
     }
 
     companion object {
+        private const val SPAN_COUNT = 2
+
         fun newInstance(): ImagesFragment = ImagesFragment()
     }
 }

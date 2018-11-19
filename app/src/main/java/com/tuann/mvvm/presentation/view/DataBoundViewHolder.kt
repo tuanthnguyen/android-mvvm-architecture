@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.tuann.mvvm.presentation.common
+package com.tuann.mvvm.presentation.view
 
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView

@@ -1,4 +1,4 @@
-package com.tuann.mvvm.presentation.common
+package com.tuann.mvvm.presentation.view
 
 import androidx.recyclerview.widget.AdapterListUpdateCallback
 import androidx.recyclerview.widget.AsyncDifferConfig
