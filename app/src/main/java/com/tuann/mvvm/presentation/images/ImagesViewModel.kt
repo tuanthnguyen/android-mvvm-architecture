@@ -22,35 +22,39 @@ class ImagesViewModel @Inject constructor(
 ) : ViewModel(), LifecycleObserver {
 
     private val compositeDisposable = CompositeDisposable()
-    val isLoadingRefresh = ObservableBoolean()
-    var page = MutableLiveData<Int>()
-    val refresh = MutableLiveData<Boolean>()
+    private val page = MutableLiveData<Int>()
+    private val _isLoadingRefresh = ObservableBoolean()
+    val isLoadingRefresh: ObservableBoolean = _isLoadingRefresh
+    private val _refresh = MutableLiveData<Boolean>()
+    val refresh: LiveData<Boolean> = _refresh
 
-    var images: LiveData<Result<List<Image>>> = Transformations
+    private val _images: LiveData<Result<List<Image>>> = Transformations
         .switchMap(page) { page ->
             return@switchMap repository.loadImages(page)
                 .toResult(schedulerProvider)
                 .toLiveData()
         }
+    val images: LiveData<Result<List<Image>>> = _images
+
+    private val _isLoading: LiveData<Boolean> by lazy {
+        _images.map {
+            _isLoadingRefresh.set(it.inProgress)
+            it.inProgress
+        }
+    }
+    val isLoading: LiveData<Boolean> = _isLoading
 
     fun loadImages(page: Int = 1) {
         this.page.value = page
     }
 
-    val isLoading: LiveData<Boolean> by lazy {
-        images.map {
-            isLoadingRefresh.set(it.inProgress)
-            it.inProgress
-        }
-    }
-
     fun onRefresh() {
-        refresh.value = true
-        this.page.value = 1
+        _refresh.value = true
+        page.value = 1
     }
 
     fun retry() {
-        this.page.value = page.value
+        page.value = page.value
     }
 
     override fun onCleared() {

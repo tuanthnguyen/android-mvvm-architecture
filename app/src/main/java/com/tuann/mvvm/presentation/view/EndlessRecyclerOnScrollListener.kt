@@ -1,9 +1,9 @@
-package com.tuann.mvvm.presentation.common
+package com.tuann.mvvm.presentation.view
 
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class EndlessRecyclerOnScrollListener(private val linearLayoutManager: LinearLayoutManager) : RecyclerView.OnScrollListener() {
+abstract class EndlessRecyclerOnScrollListener(private val gridLayoutManager: GridLayoutManager) : RecyclerView.OnScrollListener() {
     private var previousTotal = 0
     private var loading = true
     private val visibleThreshold = 5
@@ -16,8 +16,8 @@ abstract class EndlessRecyclerOnScrollListener(private val linearLayoutManager: 
         super.onScrolled(recyclerView, dx, dy)
 
         visibleItemCount = recyclerView.childCount
-        totalItemCount = linearLayoutManager.itemCount
-        firstVisibleItem = linearLayoutManager.findFirstVisibleItemPosition()
+        totalItemCount = gridLayoutManager.itemCount
+        firstVisibleItem = gridLayoutManager.findFirstVisibleItemPosition()
 
         if (loading) {
             if (totalItemCount > previousTotal) {

@@ -1,4 +1,4 @@
-package com.tuann.mvvm.presentation.common
+package com.tuann.mvvm.presentation.view
 
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
