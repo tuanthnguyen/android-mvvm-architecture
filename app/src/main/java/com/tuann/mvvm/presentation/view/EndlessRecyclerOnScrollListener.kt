@@ -10,7 +10,9 @@ abstract class EndlessRecyclerOnScrollListener(private val gridLayoutManager: Gr
     private var firstVisibleItem: Int = 0
     private var visibleItemCount: Int = 0
     private var totalItemCount: Int = 0
-    private var currentPage = 1
+    // the list has more item which always showed
+    // so I changed the `current page` in `EndlessRecyclerOnScrollListener` to 0
+    private var currentPage = 0
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
         super.onScrolled(recyclerView, dx, dy)
@@ -39,7 +41,9 @@ abstract class EndlessRecyclerOnScrollListener(private val gridLayoutManager: Gr
 
     fun reset() {
         previousTotal = 0
-        currentPage = 1
+        // the list has more item which always showed
+        // so I changed the `current page` in `EndlessRecyclerOnScrollListener` to 0
+        currentPage = 0
     }
 
     abstract fun onLoadMore(currentPage: Int)

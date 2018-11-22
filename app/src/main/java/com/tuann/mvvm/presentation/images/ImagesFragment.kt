@@ -80,6 +80,9 @@ class ImagesFragment : DaggerFragment(), RetryListener {
         binding.recyclerView.layoutManager = layoutManager
         val scrollListener = object : EndlessRecyclerOnScrollListener(layoutManager) {
             override fun onLoadMore(currentPage: Int) {
+                // We may not call imagesViewModel.loadImages(1), this func will be called because
+                // the list has more item which always showed
+                // so I changed the `current page` in `EndlessRecyclerOnScrollListener` to 0
                 imagesViewModel.loadImages(currentPage)
             }
         }
