@@ -19,25 +19,27 @@ class ImageRoomDatabase @Inject constructor(
         database.runInTransaction {
             imageDao.deleteImagesByPage(page)
             for (image in images) {
-                userDao.insert(image.userEntity!!)
+                image.userEntity?.let {
+                    userDao.insert(it)
+                }
                 imageDao.insert(image)
             }
         }
     }
 
     override fun getAllImages(): Flowable<List<ImageWithUser>> =
-            imageDao.getAllImages()
+        imageDao.getAllImages()
 
     override fun getImagesLessThanAndEqualPage(page: Int): Single<List<ImageEntity>> =
-            Flowable.just(imageDao.getImagesLessThanAndEqualPage(page))
-                    .flatMapIterable {
-                        return@flatMapIterable it
-                    }
-                    .map {
-                        it.userEntity = userDao.getUser(it.userId)
-                        return@map it
-                    }
-                    .toList()
+        Flowable.just(imageDao.getImagesLessThanAndEqualPage(page))
+            .flatMapIterable {
+                return@flatMapIterable it
+            }
+            .map {
+                it.userEntity = userDao.getUser(it.userId)
+                return@map it
+            }
+            .toList()
 
     override fun getImagesLessThanPage(page: Int): List<ImageEntity> {
         val data = imageDao.getImagesLessThanPage(page)

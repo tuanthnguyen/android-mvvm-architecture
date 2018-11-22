@@ -29,10 +29,11 @@ class ImageDataRepository @Inject constructor(
     override fun loadImages(page: Int): Single<List<Image>> =
         Single.zip(loadImagesApi(page), loadImagesDb(page), BiFunction { t1, t2 ->
             if (t1.isNotEmpty()) {
-                val imageEntities = ArrayList<Image>()
-                imageEntities.addAll(imageDatabase.getImagesLessThanPage(page - 1).toImagesFromEntity())
-                imageEntities.addAll(t1)
-                return@BiFunction imageEntities.toList()
+                val images = ArrayList<Image>()
+                // getImagesLessThanPage(page) because we will decrease the page in imageDao
+                images.addAll(imageDatabase.getImagesLessThanPage(page).toImagesFromEntity())
+                images.addAll(t1)
+                return@BiFunction images.toList()
             } else return@BiFunction t2
         })
 

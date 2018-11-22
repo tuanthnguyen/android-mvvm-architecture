@@ -25,8 +25,6 @@ interface AppComponent : AndroidInjector<App> {
         @BindsInstance
         fun application(application: Application): Builder
 
-        fun networkModule(networkModule: NetworkModule): Builder
-        fun databaseModule(databaseModule: DatabaseModule): Builder
         fun build(): AppComponent
     }
 
